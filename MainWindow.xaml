@@ -28,7 +28,7 @@
         <TextBox x:Name="txtLastName" TextWrapping="Wrap" Canvas.Top="98" Width="231" Height="27" FontSize="16" Canvas.Left="23" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox x:Name="txtMonthlyPayment" TextWrapping="Wrap" Canvas.Top="166" Width="231" Height="27" FontSize="16" Canvas.Left="21" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox x:Name="txtBedrooms" TextWrapping="Wrap" Canvas.Top="234" Width="231" Height="27" FontSize="16" Canvas.Left="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox x:Name="tztPayment" TextWrapping="Wrap" Canvas.Top="300" Width="231" Height="27" FontSize="16" Canvas.Left="311" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtPayment" TextWrapping="Wrap" Canvas.Top="300" Width="231" Height="27" FontSize="16" Canvas.Left="311" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Button x:Name="btnAddUpdateTenant" Content="Add/Update Tenant" Canvas.Left="51" Canvas.Top="279" HorizontalAlignment="Center" VerticalAlignment="Top" Width="171" Height="29" FontSize="16"/>
         <Button x:Name="btnRemoveTenant" Content="Remove Tenant" Canvas.Left="51" Canvas.Top="343" Width="171" Height="29" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <Button x:Name="btnMonthlyDues" Content="Monthly Dues" Canvas.Left="51" Canvas.Top="385" Width="171" Height="29" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"/>

@@ -20,9 +20,38 @@ namespace Midterm
     /// </summary>
     public partial class MainWindow : Window
     {
+        List<Apartment> apartments = new List<Apartment>();
         public MainWindow()
+        
         {
             InitializeComponent();
+            Preload();
+            DisplayInformation();
+        }
+        void Preload()
+        {
+            Random rand = new Random();
+            for (int i = 100; i < 301; i++)
+            {
+                string apart = "H" + i;
+                if (rand.Next(2) != 0)
+                {
+                    int monthly = rand.Next(1000, 3000);
+                    int bedrooms = rand.Next(1, 4);
+                    apartments.Add(new Apartment(apart, "Will", "Cram", monthly, bedrooms));
+                }
+                else
+                {
+                    apartments.Add(new Apartment(apart));
+                }
+            }
+        }
+        public void DisplayInformation()
+        {
+            for (int i = 0; i < apartments.Count; i++)
+            {
+                lbTenants.Items.Add(apartments[i]);
+            }
         }
     }
 }

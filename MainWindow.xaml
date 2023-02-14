@@ -12,11 +12,11 @@
         <Label Content="Last Name" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="63" Canvas.Left="23"/>
         <Label Content="Monthly Payment" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="130" Canvas.Left="23"/>
         <Label Content="Bedrooms" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="198" Canvas.Left="24"/>
-        <ListBox Height="323" Width="273" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" Canvas.Left="-290" VerticalAlignment="Center" Background="#FF929292"/>
+        <ListBox x:Name="lbTenants" Height="323" Width="273" d:ItemsSource="{d:SampleData ItemCount=5}" HorizontalAlignment="Left" Canvas.Left="-290" VerticalAlignment="Center" Background="#FF929292"/>
         <RichTextBox Height="234" Width="273" HorizontalAlignment="Center" Canvas.Left="290" VerticalAlignment="Top" Background="#FF929292">
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="RichTextBox"/>
+                    <Run Text="Notes"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>

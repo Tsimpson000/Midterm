@@ -30,13 +30,14 @@ namespace Midterm
         public Apartment(string apartmentNumber)
         {
             _isOccupied = false;
+            _apartmentNumber = apartmentNumber;
             _firstName = "";
             _lastName = "";
             _monthlyPayment = 0;
             _numberOfBedrooms = 0;
             
         }
-        public string ApartmentNumber { get => _apartmentNumber; set => _apartmentNumber = value; }
+        public string ApartmentNumber { get => _apartmentNumber;}
         public string FirstName { get => _firstName; set => _firstName = value; }
         public string LastName { get => _lastName; set => _lastName = value; }
         public decimal MonthlyPayment { get => _monthlyPayment; set => _monthlyPayment = value; }
@@ -44,5 +45,18 @@ namespace Midterm
         public float NumberOfBedrooms { get => _numberOfBedrooms; set => _numberOfBedrooms = value; }
         public string ApartmentNotes { get => _apartmentNotes; set => _apartmentNotes = value; }
         public bool IsOccupied { get => _isOccupied; set => _isOccupied = value; }
+
+        public override string ToString()
+        {
+            if(IsOccupied)
+            {
+                return $"{_apartmentNumber} - {_firstName} {_lastName} - {_currentBalance}";
+            }
+            else
+            {
+                return $"{_apartmentNumber} - Vacant - {_currentBalance}";
+            }
+           
+        }
     }
 }

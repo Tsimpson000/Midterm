@@ -21,12 +21,14 @@ namespace Midterm
     public partial class MainWindow : Window
     {
         List<Apartment> apartments = new List<Apartment>();
+        Apartment currentApartment = null;
         public MainWindow()
         
         {
             InitializeComponent();
             Preload();
             DisplayInformation();
+            DisplayApartmentCount();
         }
         void Preload()
         {
@@ -48,10 +50,43 @@ namespace Midterm
         }
         public void DisplayInformation()
         {
+            lbTenants.Items.Clear();
+
             for (int i = 0; i < apartments.Count; i++)
             {
                 lbTenants.Items.Add(apartments[i]);
             }
+        }
+
+        public void DisplayApartmentCount()
+        {
+            lblTotalApartments.Content = apartments.Count;
+        }
+
+        public void DisplayApartmentNumber()
+        {
+            lblApartmentNumber.Content = currentApartment.ApartmentNumber;
+        }
+
+        public void FirstNameText()
+        {
+            txtFirstName.Text = currentApartment.FirstName;
+        }
+        public void ListBoxSelection()
+        {
+            int selectedIndex = lbTenants.SelectedIndex;
+            currentApartment = apartments[selectedIndex];
+        }
+        private void lbTenants_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBoxSelection();
+            DisplayApartmentNumber();
+        }
+
+        private void txtFirstName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ListBoxSelection();
+            FirstNameText();
         }
     }
 }

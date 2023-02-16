@@ -65,12 +65,15 @@ namespace Midterm
 
         public void DisplayApartmentNumber()
         {
+            ListBoxSelection();
             lblApartmentNumber.Content = currentApartment.ApartmentNumber;
         }
 
-        public void FirstNameText()
+        public void DisplayTenantInfo()
         {
-            txtFirstName.Text = currentApartment.FirstName;
+            int selectedIndex = lbTenants.SelectedIndex;
+            Apartment selectedTenant = apartments[selectedIndex];
+            txtFirstName.Text = selectedTenant.FirstName;
         }
         public void ListBoxSelection()
         {
@@ -79,14 +82,14 @@ namespace Midterm
         }
         private void lbTenants_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListBoxSelection();
+            
             DisplayApartmentNumber();
         }
 
         private void txtFirstName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ListBoxSelection();
-            FirstNameText();
+            
+            DisplayTenantInfo();
         }
     }
 }

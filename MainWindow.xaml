@@ -16,7 +16,7 @@
         <RichTextBox Height="234" Width="273" HorizontalAlignment="Center" Canvas.Left="290" VerticalAlignment="Top" Background="#FF929292">
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="Notes"/>
+                    <Run x:Name="runNotes" Text="Notes"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
@@ -24,17 +24,18 @@
         <Label Content="Total Apartments:" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="-290" Canvas.Top="341" Foreground="#FFD6D6D6"/>
         <Label Content="Payment" FontSize="16" Canvas.Top="264" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="389" Width="134"/>
         <Label Content="Balance Due:" FontSize="20" Canvas.Top="370" Canvas.Left="290" Width="134" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtFirstName" TextWrapping="Wrap" Canvas.Top="31" Width="231" HorizontalAlignment="Left" Height="27" VerticalAlignment="Center" FontSize="16" Canvas.Left="22" TextChanged="txtFirstName_TextChanged"/>
+        <TextBox x:Name="txtFirstName" TextWrapping="Wrap" Canvas.Top="31" Width="231" HorizontalAlignment="Left" Height="27" VerticalAlignment="Center" FontSize="16" Canvas.Left="22"/>
         <TextBox x:Name="txtLastName" TextWrapping="Wrap" Canvas.Top="98" Width="231" Height="27" FontSize="16" Canvas.Left="23" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox x:Name="txtMonthlyPayment" TextWrapping="Wrap" Canvas.Top="166" Width="231" Height="27" FontSize="16" Canvas.Left="21" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox x:Name="txtBedrooms" TextWrapping="Wrap" Canvas.Top="234" Width="231" Height="27" FontSize="16" Canvas.Left="22" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox x:Name="txtPayment" TextWrapping="Wrap" Canvas.Top="300" Width="231" Height="27" FontSize="16" Canvas.Left="311" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button x:Name="btnAddUpdateTenant" Content="Add/Update Tenant" Canvas.Left="51" Canvas.Top="279" HorizontalAlignment="Center" VerticalAlignment="Top" Width="171" Height="29" FontSize="16"/>
-        <Button x:Name="btnRemoveTenant" Content="Remove Tenant" Canvas.Left="51" Canvas.Top="343" Width="171" Height="29" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button x:Name="btnAddUpdateTenant" Content="Add/Update Tenant" Canvas.Left="51" Canvas.Top="279" HorizontalAlignment="Center" VerticalAlignment="Top" Width="171" Height="29" FontSize="16" Click="btnAddUpdateTenant_Click"/>
+        <Button x:Name="btnRemoveTenant" Content="Remove Tenant" Canvas.Left="51" Canvas.Top="343" Width="171" Height="29" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnRemoveTenant_Click"/>
         <Button x:Name="btnMonthlyDues" Content="Monthly Dues" Canvas.Left="51" Canvas.Top="385" Width="171" Height="29" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Button x:Name="btnPartialPayment" Content="Partial Payment" Canvas.Left="311" Canvas.Top="336" Width="113" Height="29" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Button x:Name="btnPayInFull" Content="Full Payment" Canvas.Left="429" Canvas.Top="336" Width="113" Height="29" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button x:Name="btnPartialPayment" Content="Partial Payment" Canvas.Left="311" Canvas.Top="336" Width="113" Height="29" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnPartialPayment_Click"/>
+        <Button x:Name="btnPayInFull" Content="Full Payment" Canvas.Left="429" Canvas.Top="336" Width="113" Height="29" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnPayInFull_Click"/>
         <Label x:Name="lblTotalApartments" Content="" FontSize="16" Canvas.Left="-151" Canvas.Top="343" Foreground="#FFD6D6D6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="89"/>
         <Label x:Name="lblApartmentNumber" Content="" FontSize="16" Canvas.Left="210" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Label x:Name="lblTotalBalance" Content="" FontSize="20" Canvas.Top="370" Canvas.Left="408" Width="134" HorizontalAlignment="Center" VerticalAlignment="Top"/>
     </Canvas>
 </Window>

@@ -23,7 +23,7 @@ namespace Midterm
         List<Apartment> apartments = new List<Apartment>();
         Apartment currentApartment = null;
         public MainWindow()
-        
+
         {
             InitializeComponent();
             Preload();
@@ -65,31 +65,94 @@ namespace Midterm
 
         public void DisplayApartmentNumber()
         {
-            ListBoxSelection();
             lblApartmentNumber.Content = currentApartment.ApartmentNumber;
-        }
-
-        public void DisplayTenantInfo()
-        {
-            int selectedIndex = lbTenants.SelectedIndex;
-            Apartment selectedTenant = apartments[selectedIndex];
-            txtFirstName.Text = selectedTenant.FirstName;
         }
         public void ListBoxSelection()
         {
             int selectedIndex = lbTenants.SelectedIndex;
             currentApartment = apartments[selectedIndex];
-        }
-        private void lbTenants_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-            DisplayApartmentNumber();
+            if(selectedIndex >= 0)
+            {
+                currentApartment = apartments[selectedIndex];
+            }
         }
 
-        private void txtFirstName_TextChanged(object sender, TextChangedEventArgs e)
+        private void lbTenants_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListBoxSelection();
+            DisplayApartmentNumber();
+            DisplayTenantText();
+
+        }
+        public void DisplayTenantText()
+        {
+            txtFirstName.Text = currentApartment.FirstName;
+            txtLastName.Text = currentApartment.LastName;
+            txtMonthlyPayment.Text = currentApartment.MonthlyPayment.ToString();
+            txtBedrooms.Text = currentApartment.NumberOfBedrooms.ToString();
+        }
+
+        private void btnAddUpdateTenant_Click(object sender, RoutedEventArgs e)
+        {
+            //ListBoxSelection();
+            
+            string apartmentNumber = currentApartment.ApartmentNumber;
+            string fName = txtFirstName.Text;
+            string lName = txtLastName.Text;
+            string mPayment = txtMonthlyPayment.Text;
+            string bedrooms = txtBedrooms.Text;
+
+            decimal monthlyPayment = decimal.Parse(mPayment);
+            float numberOfBedrooms = float.Parse(bedrooms);
+            apartments.Remove(currentApartment);
+            apartments.Add(new Apartment(apartmentNumber, fName, lName, monthlyPayment, numberOfBedrooms));
+
+            DisplayInformation();
+        }
+
+        private void btnRemoveTenant_Click(object sender, RoutedEventArgs e)
         {
             
-            DisplayTenantInfo();
+            //ListBoxSelection();
+            int selectedIndex = lbTenants.SelectedIndex;
+            Apartment currentApartment = apartments[selectedIndex];
+            string apartmentNumber = currentApartment.ApartmentNumber;
+            apartments.Remove(currentApartment);
+            //apartments.Add(new Apartment(apartmentNumber));
+            DisplayInformation();
+        }
+
+        private void btnPartialPayment_Click(object sender, RoutedEventArgs e)
+        {
+
+            string partialPay = txtPayment.Text;
+            decimal partialPayment = decimal.Parse(partialPay);
+            decimal remainingBalance = currentApartment.MonthlyPayment - partialPayment;
+            if(remainingBalance > 0)
+            {
+                lblTotalBalance.Content = "$" + remainingBalance.ToString();
+                currentApartment.MonthlyPayment = remainingBalance;
+            }
+            else
+            {
+                MessageBox.Show("Please input a correct partial payment");
+            }
+        }
+
+        private void btnPayInFull_Click(object sender, RoutedEventArgs e)
+        {
+            string fullPay = txtPayment.Text;
+            decimal fullPayment = decimal.Parse(fullPay);
+            decimal remainingBalance = currentApartment.MonthlyPayment - fullPayment;
+            if(remainingBalance == 0)
+            {
+                lblTotalBalance.Content = "$" + remainingBalance.ToString();
+                currentApartment.MonthlyPayment = remainingBalance;
+            }
+            else
+            {
+                MessageBox.Show("Please input a correct full payment");
+            }
         }
     }
 }

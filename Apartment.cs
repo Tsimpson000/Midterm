@@ -33,8 +33,8 @@ namespace Midterm
             _apartmentNumber = apartmentNumber;
             _firstName = "";
             _lastName = "";
-            _monthlyPayment = 0;
-            _numberOfBedrooms = 0;
+            _monthlyPayment = -1;
+            _numberOfBedrooms = -1;
             
         }
         public string ApartmentNumber { get => _apartmentNumber;}
@@ -50,11 +50,11 @@ namespace Midterm
         {
             if(IsOccupied)
             {
-                return $"{_apartmentNumber} - {_firstName} {_lastName} - {_currentBalance}";
+                return $"{_apartmentNumber} - {_firstName} {_lastName} - {_monthlyPayment}";
             }
             else
             {
-                return $"{_apartmentNumber} - Vacant - {_currentBalance}";
+                return $"{_apartmentNumber} - Vacant - {0}";
             }
            
         }

@@ -32,6 +32,8 @@ namespace Midterm
             Preload();
             DisplayInformation();
             DisplayApartmentCount();
+            runNotes.Text = "Notes";
+
         }
         void Preload()
         {
@@ -85,6 +87,7 @@ namespace Midterm
             ListBoxSelection();
             DisplayApartmentNumber();
             DisplayTenantText();
+            
 
         }
         public void DisplayTenantText()
@@ -93,6 +96,8 @@ namespace Midterm
             txtLastName.Text = currentApartment.LastName;
             txtMonthlyPayment.Text = currentApartment.MonthlyPayment.ToString();
             txtBedrooms.Text = currentApartment.NumberOfBedrooms.ToString();
+            runNotes.Text = currentApartment.ApartmentNotes;
+            
         }
 
         private void btnAddUpdateTenant_Click(object sender, RoutedEventArgs e)
@@ -130,11 +135,11 @@ namespace Midterm
 
             string partialPay = txtPayment.Text;
             decimal partialPayment = decimal.Parse(partialPay);
-            decimal remainingBalance = currentApartment.MonthlyPayment - partialPayment;
+            decimal remainingBalance = currentApartment.CurrentBalance - partialPayment;
             if(remainingBalance > 0)
             {
                 lblTotalBalance.Content = "$" + remainingBalance.ToString();
-                currentApartment.MonthlyPayment = remainingBalance;
+                currentApartment.CurrentBalance = remainingBalance;
             }
             else
             {
@@ -146,16 +151,31 @@ namespace Midterm
         {
             string fullPay = txtPayment.Text;
             decimal fullPayment = decimal.Parse(fullPay);
-            decimal remainingBalance = currentApartment.MonthlyPayment - fullPayment;
+            decimal remainingBalance = currentApartment.CurrentBalance - fullPayment;
             if(remainingBalance == 0)
             {
                 lblTotalBalance.Content = "$" + remainingBalance.ToString();
-                currentApartment.MonthlyPayment = remainingBalance;
+                currentApartment.CurrentBalance = remainingBalance;
             }
             else
             {
                 MessageBox.Show("Please input a correct full payment");
             }
+        }
+
+        private void btnMonthlyDues_Click(object sender, RoutedEventArgs e)
+        {
+            decimal balance = currentApartment.CurrentBalance;
+            decimal addBalance = currentApartment.MonthlyPayment;
+
+           
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            currentApartment.ApartmentNotes = runNotes.Text;
+            runNotes.Text = "SAVED";
         }
     }
 }

@@ -31,11 +31,12 @@
         <TextBox x:Name="txtPayment" TextWrapping="Wrap" Canvas.Top="300" Width="231" Height="27" FontSize="16" Canvas.Left="311" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Button x:Name="btnAddUpdateTenant" Content="Add/Update Tenant" Canvas.Left="51" Canvas.Top="279" HorizontalAlignment="Center" VerticalAlignment="Top" Width="171" Height="29" FontSize="16" Click="btnAddUpdateTenant_Click"/>
         <Button x:Name="btnRemoveTenant" Content="Remove Tenant" Canvas.Left="51" Canvas.Top="343" Width="171" Height="29" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnRemoveTenant_Click"/>
-        <Button x:Name="btnMonthlyDues" Content="Monthly Dues" Canvas.Left="51" Canvas.Top="385" Width="171" Height="29" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button x:Name="btnMonthlyDues" Content="Monthly Dues" Canvas.Left="51" Canvas.Top="385" Width="171" Height="29" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Click="btnMonthlyDues_Click"/>
         <Button x:Name="btnPartialPayment" Content="Partial Payment" Canvas.Left="311" Canvas.Top="336" Width="113" Height="29" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnPartialPayment_Click"/>
         <Button x:Name="btnPayInFull" Content="Full Payment" Canvas.Left="429" Canvas.Top="336" Width="113" Height="29" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Click="btnPayInFull_Click"/>
         <Label x:Name="lblTotalApartments" Content="" FontSize="16" Canvas.Left="-151" Canvas.Top="343" Foreground="#FFD6D6D6" HorizontalAlignment="Center" VerticalAlignment="Top" Width="89"/>
         <Label x:Name="lblApartmentNumber" Content="" FontSize="16" Canvas.Left="210" HorizontalAlignment="Left" VerticalAlignment="Center"/>
         <Label x:Name="lblTotalBalance" Content="" FontSize="20" Canvas.Top="370" Canvas.Left="408" Width="134" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Button Content="Save Notes" Canvas.Left="349" Canvas.Top="239" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Height="30" FontSize="18" Click="Button_Click"/>
     </Canvas>
 </Window>

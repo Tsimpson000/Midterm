@@ -12,30 +12,31 @@ namespace Midterm
         string _firstName;
         string _lastName;
         decimal _monthlyPayment;
-        decimal _currentBalance;
-        float _numberOfBedrooms;
+        decimal _currentBalance;  
         string _apartmentNotes;
         bool _isOccupied;
 
-        public Apartment(string apartmentNumber, string firstName, string lastName, decimal monthlyPayment, float numberOfBedrooms)
+        float _numberOfBedrooms;
+
+        public Apartment(string apartmentNumber, string firstName, string lastName, decimal monthlyPayment)
         {
+
+            Random rand = new Random();
             _apartmentNumber = apartmentNumber;
             _firstName = firstName;
             _lastName = lastName;
             _monthlyPayment = monthlyPayment;
-            _numberOfBedrooms = numberOfBedrooms;
-            _isOccupied = true;
+            _numberOfBedrooms = rand.Next(1, 4);
+            AddUpdateTenant();
+
         }
 
         public Apartment(string apartmentNumber)
         {
-            _isOccupied = false;
+            Random rand = new Random();
+            RemoveTenant();
             _apartmentNumber = apartmentNumber;
-            _firstName = "";
-            _lastName = "";
-            _monthlyPayment = -1;
-            _numberOfBedrooms = -1;
-            
+            _numberOfBedrooms = rand.Next(1, 4);     
         }
         public string ApartmentNumber { get => _apartmentNumber;}
         public string FirstName { get => _firstName; set => _firstName = value; }
@@ -50,13 +51,25 @@ namespace Midterm
         {
             if(IsOccupied)
             {
-                return $"{_apartmentNumber} - {_firstName} {_lastName} - {_monthlyPayment}";
+                return $"{_apartmentNumber} - {_firstName} {_lastName} - {_currentBalance}";
             }
             else
             {
                 return $"{_apartmentNumber} - Vacant - {0}";
             }
            
+        }
+        public void RemoveTenant()
+        {
+            _isOccupied = false;
+            _firstName = "";
+            _lastName = "";
+            _monthlyPayment = 0;
+            _apartmentNotes = "";
+        }
+        public void AddUpdateTenant()
+        {
+            _isOccupied = true;
         }
     }
 }

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Midterm"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="873" Background="#FF292828">
-    <Canvas Margin="300,10,300,101" Background="#FF929292">
+        Title="MainWindow" Height="470" Width="873" Background="#FF292828">
+    <Canvas Margin="300,10,300,112" Background="#FF929292">
         <Label Content="First Name" FontSize="16" HorizontalAlignment="Left" Canvas.Left="23" VerticalAlignment="Center"/>
         <Label Content="Apt #" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="161"/>
         <Label Content="Last Name" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center" Canvas.Top="63" Canvas.Left="23"/>

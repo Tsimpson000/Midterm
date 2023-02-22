@@ -44,8 +44,7 @@ namespace Midterm
                 if (rand.Next(2) != 0)
                 {
                     int monthly = rand.Next(1000, 3000);
-                    int bedrooms = rand.Next(1, 4);
-                    apartments.Add(new Apartment(apart, "Will", "Cram", monthly, bedrooms));
+                    apartments.Add(new Apartment(apart, "Will", "Cram", monthly));
                 }
                 else
                 {
@@ -75,7 +74,7 @@ namespace Midterm
         public void ListBoxSelection()
         {
             int selectedIndex = lbTenants.SelectedIndex;
-            currentApartment = apartments[selectedIndex];
+           
             if(selectedIndex >= 0)
             {
                 currentApartment = apartments[selectedIndex];
@@ -102,32 +101,28 @@ namespace Midterm
 
         private void btnAddUpdateTenant_Click(object sender, RoutedEventArgs e)
         {
-            //ListBoxSelection();
-            
-            string apartmentNumber = currentApartment.ApartmentNumber;
-            string fName = txtFirstName.Text;
-            string lName = txtLastName.Text;
-            string mPayment = txtMonthlyPayment.Text;
-            string bedrooms = txtBedrooms.Text;
+            currentApartment.AddUpdateTenant();
 
-            decimal monthlyPayment = decimal.Parse(mPayment);
-            float numberOfBedrooms = float.Parse(bedrooms);
-            apartments.Remove(currentApartment);
-            apartments.Add(new Apartment(apartmentNumber, fName, lName, monthlyPayment, numberOfBedrooms));
+            currentApartment.FirstName = txtFirstName.Text;
+            currentApartment.LastName = txtLastName.Text;
+            currentApartment.MonthlyPayment = decimal.Parse(txtMonthlyPayment.Text);
+            
 
             DisplayInformation();
+            MessageBox.Show("Tenant added/Updated");
         }
 
         private void btnRemoveTenant_Click(object sender, RoutedEventArgs e)
         {
-            
-            //ListBoxSelection();
-            int selectedIndex = lbTenants.SelectedIndex;
-            Apartment currentApartment = apartments[selectedIndex];
-            string apartmentNumber = currentApartment.ApartmentNumber;
-            apartments.Remove(currentApartment);
-            //apartments.Add(new Apartment(apartmentNumber));
+
+            ListBoxSelection();
+
+
+            currentApartment.RemoveTenant();
+
+
             DisplayInformation();
+            MessageBox.Show("Tenant Removed");
         }
 
         private void btnPartialPayment_Click(object sender, RoutedEventArgs e)
@@ -140,6 +135,8 @@ namespace Midterm
             {
                 lblTotalBalance.Content = "$" + remainingBalance.ToString();
                 currentApartment.CurrentBalance = remainingBalance;
+                DisplayInformation();
+                MessageBox.Show("Partial Payment made");
             }
             else
             {
@@ -156,6 +153,8 @@ namespace Midterm
             {
                 lblTotalBalance.Content = "$" + remainingBalance.ToString();
                 currentApartment.CurrentBalance = remainingBalance;
+                DisplayInformation();
+                MessageBox.Show("Full Payment made");
             }
             else
             {
@@ -165,17 +164,20 @@ namespace Midterm
 
         private void btnMonthlyDues_Click(object sender, RoutedEventArgs e)
         {
-            decimal balance = currentApartment.CurrentBalance;
-            decimal addBalance = currentApartment.MonthlyPayment;
 
-           
+            for (int i = 0; i < apartments.Count; i++)
+            {
+                apartments[i].CurrentBalance += apartments[i].MonthlyPayment;
+            }
+            DisplayInformation();
+            MessageBox.Show("Monthly dues added");
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            currentApartment.ApartmentNotes = runNotes.Text;
-            runNotes.Text = "SAVED";
+            currentApartment.ApartmentNotes += runNotes.Text;
+            MessageBox.Show("Saved");
         }
     }
 }
